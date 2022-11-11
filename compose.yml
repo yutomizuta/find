@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+     - 3000:3000
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
