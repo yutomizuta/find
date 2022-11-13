@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
   # 学生用
   devise_for :students,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -17,5 +14,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get "/about" => "homes#about"
+    resources :students, only: [:index, :show, :edit, :update]
   end
 end
