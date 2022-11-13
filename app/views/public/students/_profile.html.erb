@@ -1,0 +1,33 @@
+<table class='table table-striped"'>
+  <tbody>
+    <tr><%= image_tag student.get_profile_image(150,150), class: "rounded-circle" %></tr>
+    <tr>
+    	  <th>名前</th>
+    	  <td><%= student.last_name %><%= student.first_name %></td>
+    </tr>
+    <tr>
+      <th>性別</th>
+      <td><%= student.gender %></td>
+    </tr>
+    <tr>
+      <th>出身地</th>
+      <td><%= student.birthplace %></td>
+    </tr>
+    <tr>
+      <th>大学名</td>
+      <td><%= student.university_name %></td>
+    </tr>
+    <tr>
+      <th>学年</th>
+      <td><%= student.grade %></td>
+    </tr>
+    <tr>
+      <th>学部</th>
+      <td><%= student.undergraduate %></td>
+    </tr>
+    <tr>
+      <th>学科</th>
+      <td><%= student.course %></td>
+    </tr>
+  </tbody>
+</table>
