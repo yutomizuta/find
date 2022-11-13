@@ -1,29 +1,80 @@
-<h2>Sign up</h2>
+<div class="container">
+  <h2 class="my-4 text-center">新規登録フォーム<i class="fas fa-user-graduate"></i></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <table class="mx-auto">
+      <tbody>
+        <tr>
+          <td><%= f.label :first_name, "姓" %></td>
+          <td><%= f.text_field :first_name, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :last_name, "名" %></td>
+          <td><%= f.text_field :last_name, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :性別 %></td>
+          <td>
+            <%= f.radio_button :gender, "男" %>
+            <%= f.label :gender, "男" %>
+            <%= f.radio_button :gender, "女" %>
+            <%= f.label :gender, "女" %>
+            <%= f.radio_button :gender, "その他" %>
+            <%= f.label :gender, "その他" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :出身地 %></td>
+          <td><%= f.select :birthplace, Student.birthplaces.keys, {prompt: "選択してください"} %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :大学名 %></td>
+          <td><%= f.text_field :university_name, autofocus: true, autocomplete: "universit_name", :placeholder =>"〇〇大学" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :学年 %></td>
+          <td><%= f.select :grade, [*(1..4)], {prompt: "選択してください"} %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :学部 %></td>
+          <td><%= f.text_field :undergraduate, autofocus: true, autocomplete: "undergraduate", :placeholder =>"〇〇学部" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :学科 %></td>
+          <td><%= f.text_field :course, autofocus: true, autocomplete: "course", :placeholder =>"〇〇学科" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :メールアドレス %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :パスワード %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 字以上)</em>
+            <% end %>
+          </td>
+          <td>
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :パスワード再入力 %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :プロフィール画像 %></td>
+          <td><%= f.file_field :profile_image, accept: 'image/*' %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= f.submit "登録", class: "mt-2 btn btn-success btn-block" %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+  <h5 class="text-center">既に登録済みの方</h5>
+  <p class="text-center"><%= link_to "こちら", new_student_session_path, class: "underline" %>からログインしてください。</p>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
