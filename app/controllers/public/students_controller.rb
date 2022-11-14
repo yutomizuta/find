@@ -5,6 +5,7 @@ class Public::StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     @taken_course = TakenCourse.new
+    @taken_courses = @student.taken_courses
   end
 
   def edit

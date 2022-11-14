@@ -7,7 +7,9 @@ class Public::TakenCoursesController < ApplicationController
   end
 
   def destroy
-    
+    taken_course =  TakenCourse.find(params[:id])
+    taken_course.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private

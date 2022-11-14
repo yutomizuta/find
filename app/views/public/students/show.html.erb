@@ -72,6 +72,22 @@
               <%= f.submit "追加", class: 'btn btn-outline-success' %>
             </div>
         <% end %>
+        <table class="table table-sm">
+          <tbody>
+            <% @taken_courses.each do |taken_course| %>
+              <tr>
+                <td><%= taken_course.name %></td>
+                <td><%= taken_course.day_of_week %></td>
+                <td><%= taken_course.period %></td>
+                <td>
+                  <%= link_to taken_course_path(taken_course), method: :delete, class: "btn btn-outline-danger" do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       <% end %>
     </div>
   </div>
