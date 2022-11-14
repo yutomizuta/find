@@ -1,2 +1,59 @@
-<h1>Public::Students#edit</h1>
-<p>Find me in app/views/public/students/edit.html.erb</p>
+<div class="container">
+  <h2 class="my-4 text-center">プロフィール編集<i class="fas fa-user-graduate"></i></h2>
+
+  <%= render 'layouts/errors', obj: @student %>
+  <%= form_with model:@student do |f| %>
+    <table class="mx-auto">
+      <tbody>
+        <tr>
+          <td><%= f.label :last_name, "姓" %></td>
+          <td><%= f.text_field :last_name, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :first_name, "名" %></td>
+          <td><%= f.text_field :first_name, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :性別 %></td>
+          <td>
+            <%= f.radio_button :gender, "男" %>
+            <%= f.label :gender, "男" %>
+            <%= f.radio_button :gender, "女" %>
+            <%= f.label :gender, "女" %>
+            <%= f.radio_button :gender, "その他" %>
+            <%= f.label :gender, "その他" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :出身地 %></td>
+          <td><%= f.select :birthplace, Student.birthplaces.keys, {prompt: "選択してください"} %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :大学名 %></td>
+          <td><%= f.text_field :university_name, autofocus: true, autocomplete: "universit_name", :placeholder =>"〇〇大学" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :学年 %></td>
+          <td><%= f.select :grade, [*(1..4)], {prompt: "選択してください"} %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :学部 %></td>
+          <td><%= f.text_field :undergraduate, autofocus: true, autocomplete: "undergraduate", :placeholder =>"〇〇学部" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :学科 %></td>
+          <td><%= f.text_field :course, autofocus: true, autocomplete: "course", :placeholder =>"〇〇学科" %></td>
+        </tr>
+        
+        <tr>
+          <td><%= f.label :プロフィール画像 %></td>
+          <td><%= f.file_field :profile_image, accept: 'image/*' %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= f.submit "編集確定", class: "mt-2 btn btn-outline-warning btn-block" %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+

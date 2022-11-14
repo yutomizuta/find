@@ -11,9 +11,18 @@ class Public::StudentsController < ApplicationController
   end
 
   def update
+    if @student.update(student_params)
+      redirect_to student_path(@student)
+    else
+      render 'edit'
+    end
   end
 
   private
+
+  def student_params
+    params.require(:student).permit(:last_name, :first_name, :gender, :birthplace, :university_name, :grade, :undergraduate, :course, :profile_image)
+  end
 
   def ensure_correct_student
     @student = Student.find(params[:id])
