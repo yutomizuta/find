@@ -1,6 +1,6 @@
 <table class='table table-striped"'>
   <tbody>
-    <tr><%= image_tag student.get_profile_image(150,150), class: "rounded-circle" %></tr>
+    <tr><%= image_tag student.get_profile_image(150,150), class: "rounded-lg" %></tr>
     <tr>
       <th>名前</th>
       <td><%= student.last_name %><%= student.first_name %></td>
@@ -29,5 +29,21 @@
       <th>学科</th>
       <td><%= student.course %></td>
     </tr>
+    <tr>
+      <th>follows</th>
+      <td><%= link_to student.followings.count, student_followings_path(student) %></td>
+    </tr>
+    <tr>
+      <th>followers</th>
+      <td><%= link_to student.followers.count, student_followers_path(student) %></td>
+    </tr>
   </tbody>
 </table>
+<div class='row'>
+  <% if current_student != student %>
+    <%= render "public/relationships/btn", student: student %>
+  <% end %>
+  <%= link_to edit_student_path(student), class: "btn btn-outline-secondary btn-block " do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+</div>

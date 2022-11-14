@@ -36,4 +36,20 @@ class Student < ApplicationRecord
   validates :course,          presence: true
 
   has_many :taken_courses
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships,  source: :follower
+  has_many :followings, through: :relationships, source: :followed
+
+  def follow(student)
+    relationships.create(followed_id: student.id)
+  end
+
+  def unfollow(student)
+    relationships.find_by(followed_id: student.id).destroy
+  end
+
+  def following?(student)
+    followings.include?(student)
+  end
 end

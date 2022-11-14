@@ -1,0 +1,14 @@
+<table class='table'>
+  <tbody>
+    <% students.each do |student| %>
+      <tr>
+        <td><%= image_tag student.get_profile_image(80,80), class: "rounded-lg" %></td>
+        <td><%= student.last_name %><%= student.first_name %></td>
+        <td>フォロー数:<%= student.followings.count %> </td>
+        <td>フォロワー数:<%= student.followers.count %></td>
+        <td><%= render "public/relationships/btn", student: student %></td>
+        <td><%= link_to 'プロフィール', student, class: "btn btn-outline-dark" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
