@@ -34,4 +34,6 @@ class Student < ApplicationRecord
   validates :grade,           presence: true
   validates :undergraduate,   presence: true
   validates :course,          presence: true
+
+  has_many :taken_courses
 end

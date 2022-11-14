@@ -2,9 +2,78 @@
   <div class="row">
     <div class="col-md-3">
       <h2 class="mt-3">プロフィール</h2>
-      <%= render 'profile', student: @student %>
+      <%= render 'public/students/profile', student: @student %>
     </div>
     <div class="col-md-8 offset-md-1">
+      <table class="table table-bordered mt-4">
+        <thead>
+          <th></th>
+          <th>月</th>
+          <th>火</th>
+          <th>水</th>
+          <th>木</th>
+          <th>金</th>
+          <th>土</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <% if current_student == @student %>
+        <%= form_with model:@taken_course do |f| %>
+            <div class="d-flex">
+              <%= f.label :科目名 %>
+              <%= f.text_field :name %>
+              <%= f.select :day_of_week, TakenCourse.day_of_weeks.keys, {prompt: "〇曜日"} %>
+              <%= f.select :period, TakenCourse.periods.keys, {prompt: "〇限"} %>
+              <%= f.submit "追加", class: 'btn btn-outline-success' %>
+            </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

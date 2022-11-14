@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "/about" => "homes#about"
     resources :students, only: [:index, :show, :edit, :update]
+    resources :taken_courses, only: [:create, :destroy]
   end
 end
