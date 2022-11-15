@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2 class="my-4">DM with <%= @student.last_name %><%= @student.first_name %></h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= @student.last_name %><%= @student.first_name %></th>
+            <th class="text-right"><%= current_student.last_name %><%= current_student.first_name %></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @chats.each do |chat| %>
+          <% if chat.student_id != current_student.id %>
+            <tr>
+              <td>
+                <p class="bg-info text-white rounded-pill text-left"><%= chat.message %></p>
+              </td>
+            </tr>
+          <% else %>
+            <tr>
+              <td></td>
+              <td>
+                <p class="text-dark bg-warning rounded-pill text-right"><%= chat.message %></p>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+      </table>
+
+      <%= form_with model: @chat do |f| %>
+        <div class="d-flex justify-content-end">
+          <%= f.text_field :message %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "send", class:"btn btn-sm btn-outline-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

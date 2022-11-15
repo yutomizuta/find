@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-3">
+      <%= render 'public/students/profile', student: current_student %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <table class="table">
+        <thead class="thead-dark">
+          <th></th>
+          <th>名前</th>
+          <th>最終メッセージ</th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @another_student_rooms.each do |student_room| %>
+            <tr>
+              <td><%= image_tag student_room.student.get_profile_image(80,80), class: "rounded-lg" %></td>
+              <td><%= student_room.student.last_name %><%= student_room.student.first_name %></td>
+              <td><%= Chat.find_by(id: student_room.room.chat_ids.last)&.message %></td>
+              <td><%= link_to 'プロフィール', student_path(student_room.student), class: "btn btn-outline-dark" %></td>
+              <td>
+                <%= link_to room_path(student_room.student.id), class: "btn btn-block btn-outline-primary" do %>
+                  <i class="far fa-envelope"></i> 
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+</div>

@@ -72,22 +72,22 @@
               <%= f.submit "追加", class: 'btn btn-outline-success' %>
             </div>
         <% end %>
-        <table class="table table-sm">
-          <tbody>
-            <% @taken_courses.each do |taken_course| %>
-              <tr>
-                <td><%= taken_course.name %></td>
-                <td><%= taken_course.day_of_week %></td>
-                <td><%= taken_course.period %></td>
-                <td>
-                  <%= link_to taken_course_path(taken_course), method: :delete, class: "btn btn-outline-danger" do %>
+        <div class="d-flex flex-wrap mt-3">
+          <% @taken_courses.each do |taken_course| %>
+            <div class="card bg-success text-white ml-2 mb-2" style="width: 8rem;">
+              <h5 class="card-title"><%= taken_course.name %></h5>
+              <ul class="list-group list-group-flush text-dark">
+                <li class="list-group-item"><%= taken_course.day_of_week %></li>
+                <li class="list-group-item"><%= taken_course.period %></li>
+                <li class="list-group-item">
+                  <%= link_to taken_course_path(taken_course), method: :delete, class: "btn btn-outline-danger btn-block" do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

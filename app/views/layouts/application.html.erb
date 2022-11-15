@@ -22,23 +22,40 @@
             <ul class="navbar-nav ml-auto">
               <% if student_signed_in? %>
                 <li>
-                  <%= link_to "MyPage", student_path(current_student), class: 'nav-link text-light' %>
+                  <%= link_to student_path(current_student), class: 'nav-link text-light' do %>
+                    <i class="fas fa-home"></i>MyPage 
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Logout", destroy_student_session_path, method: :delete,class: 'nav-link text-light' %>
+                  <%= link_to rooms_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-envelope"></i>DM
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_student_session_path, method: :delete,class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-out-alt"></i>Logout
+                  <% end %>
                 </li>
               <% else %>
                 <li>
-                  <%= link_to "Home", root_path,class: 'nav-link text-light' %>
+                  <%= link_to root_path,class: 'nav-link text-light' do %>
+                    <i class="fas fa-home"></i>Home
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "About", about_path,class: 'nav-link text-light' %>
+                  <%= link_to about_path,class: 'nav-link text-light' do %>
+                    <i class="fas fa-link"></i> About
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Sign up", new_student_registration_path,class: 'nav-link text-light' %>
+                  <%= link_to new_student_registration_path,class: 'nav-link text-light' do %>
+                    <i class="fas fa-user-plus"></i> Signup
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Login", new_student_session_path ,class: 'nav-link text-light' %>
+                  <%= link_to new_student_session_path ,class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-in-alt"></i> login
+                  <% end %>
                 </li>
               <% end %>
             </ul>

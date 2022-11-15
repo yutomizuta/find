@@ -40,6 +40,8 @@ class Student < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships,  source: :follower
   has_many :followings, through: :relationships, source: :followed
+  has_many :student_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
   def follow(student)
     relationships.create(followed_id: student.id)

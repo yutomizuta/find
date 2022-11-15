@@ -1,6 +1,11 @@
 <% if current_student != student %>
   <% if current_student.following?(student) %>
     <%= link_to "フォロー外す", student_relationships_path(student.id), method: :delete, class: "btn btn-dark btn-block" %>
+    <% if student.following?(current_student) %>
+      <%= link_to room_path(student.id), class: "btn btn-block btn-outline-primary" do %>
+      <i class="far fa-envelope"></i> 
+      <% end %>
+    <% end %>
   <% else %>
     <%= link_to "フォローする", student_relationships_path(student.id), method: :post, class: "btn btn-outline-primary btn-block" %>
   <% end %>
