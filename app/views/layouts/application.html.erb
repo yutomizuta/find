@@ -32,6 +32,11 @@
                   <% end %>
                 </li>
                 <li>
+                  <%= link_to bbses_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-paste"></i>BBS
+                  <% end %>
+                </li>
+                <li>
                   <%= link_to destroy_student_session_path, method: :delete,class: 'nav-link text-light' do %>
                     <i class="fas fa-sign-out-alt"></i>Logout
                   <% end %>

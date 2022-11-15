@@ -22,5 +22,7 @@ Rails.application.routes.draw do
     resources :taken_courses, only: [:create, :destroy]
     resources :chats, only: [:create]
     resources :rooms, only: [:index, :show]
+    resources :bbses, only: [:index, :show, :create]
+    get "search" => "searches#search"
   end
 end
