@@ -1,6 +1,9 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 mx-auto">
+  <div class="row mt-4">
+    <div class="col-md-3">
+      <%= render 'public/students/profile', student: @student %>
+    </div>
+    <div class="col-md-8 offset-md-1">
       <h2 class="my-4">DM with <%= @student.last_name %><%= @student.first_name %></h2>
 
       <table class="table">
