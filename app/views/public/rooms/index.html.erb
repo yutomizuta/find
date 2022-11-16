@@ -19,13 +19,14 @@
               <td><%= student_room.student.last_name %><%= student_room.student.first_name %></td>
               <td><%= Chat.find_by(id: student_room.room.chat_ids.last)&.message %></td>
               <td><%= link_to 'プロフィール', student_path(student_room.student), class: "btn btn-outline-dark" %></td>
-              <% if current_student != student_room.student && current_student.following?(student_room.student) && student_room.student.following?(current_student) %>
               <td>
+              <% if current_student != student_room.student && current_student.following?(student_room.student) && student_room.student.following?(current_student) %>
+              
                 <%= link_to room_path(student_room.student.id), class: "btn btn-block btn-outline-primary" do %>
                   <i class="far fa-envelope"></i> 
                 <% end %>
-              </td>
               <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
