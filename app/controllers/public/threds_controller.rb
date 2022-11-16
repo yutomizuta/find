@@ -13,7 +13,7 @@ class Public::ThredsController < ApplicationController
     @thred.student_id = current_student.id
     @thred.bbs_id = bbs.id
     if @thred.save
-      redirect_back(fallback_location: root_path)
+      redirect_to bbs_path(bbs)
     else
       @bbs = Bbs.find(params[:bbs_id])
       @threds = @bbs.threds
