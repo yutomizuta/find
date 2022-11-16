@@ -62,9 +62,17 @@
           </tr>
         </tbody>
       </table>
+
+      <h5>オンライン一覧</h5>
+      <div class="d-flex flex-wrap">
+        <% @taken_courses.where(day_of_week: 'オンライン').each do |online| %>
+          <div class="card text-white bg-info mr-2"><%= online.name %></div>
+        <% end %>
+      </div>
+      
       <% if current_student == @student %>
         <%= form_with model:@taken_course do |f| %>
-            <div class="d-flex">
+            <div class="d-flex mt-4">
               <%= f.label :科目名 %>
               <%= f.text_field :name %>
               <%= f.select :day_of_week, TakenCourse.day_of_weeks.keys, {prompt: "〇曜日"} %>
