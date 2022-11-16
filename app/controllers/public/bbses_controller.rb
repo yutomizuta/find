@@ -7,7 +7,9 @@ class Public::BbsesController < ApplicationController
   end
 
   def show
-    
+    @bbs = Bbs.find(params[:id])
+    @thred = Thred.new
+    @threds = @bbs.threds.order(id: "DESC")
   end
 
   def create

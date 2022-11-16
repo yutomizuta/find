@@ -117,18 +117,22 @@ ActiveRecord::Schema.define(version: 2022_11_15_172554) do
 
   create_table "thred_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "thred_id"
+    t.bigint "student_id"
     t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_thred_comments_on_student_id"
     t.index ["thred_id"], name: "index_thred_comments_on_thred_id"
   end
 
   create_table "threds", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "bbs_id"
+    t.bigint "student_id"
     t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bbs_id"], name: "index_threds_on_bbs_id"
+    t.index ["student_id"], name: "index_threds_on_student_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

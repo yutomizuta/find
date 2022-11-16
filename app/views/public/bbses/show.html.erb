@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-3">
+      <%= render 'public/students/profile', student: current_student %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <h2>Newスレッド</h2>
+      <%= render 'layouts/errors', obj: @thred %>
+      <%= form_with model: [@bbs, @thred] do |f| %>
+        <%= f.text_area :text, class: "form-control" %>
+        <%= f.submit "投稿", class: "btn btn-outline-success" %>
+      <% end %>
+
+      <h2 class="mt-5"><%= @bbs.university_name %>のスレッド一覧</h2>
+      <% @threds.each do |thred| %>
+        <div class="card mb-2">
+          <div class="card-body">
+            <h5 class="card-title"><%= thred.text %></h5>
+            <p class="card-text">
+              作成者：
+              <%= link_to student_path(thred.student), class: "btn btn-outline-info btn-sm" do %>
+                <%= thred.student.last_name %><%= thred.student.first_name %>
+              <% end %>
+              <%= link_to bbs_thred_path(@bbs, thred), class: "btn btn-outline-warning btn-sm" do %>
+                コメント<i class="fas fa-comment-dots"></i>
+              <% end %>
+              <% if current_student == thred.student %>
+                <%= link_to bbs_thred_path(@bbs, thred), method: :delete, class: "btn btn-outline-danger btn-sm" do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

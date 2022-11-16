@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-3">
+      <%= render 'public/students/profile', student: @thred.student %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5 class="card-title"><%= @thred.text %></h5>
+          <p class="card-text">作成者：<%= @thred.student.last_name %><%= @thred.student.first_name %></p>
+        </div>
+      </div>
+      <table>
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= image_tag comment.student.get_profile_image(50,50), class: "rounded-lg" %></td>
+              <td>
+                <%= link_to student_path(comment.student), class: "btn btn-outline-info btn-sm" do %>
+                  <%= comment.student.last_name %><%= comment.student.first_name %>
+                <% end %>
+              </td>
+              <td><%= comment.text %></td>
+              <% if current_student == comment.student %>
+              <td><%= link_to bbs_thred_thred_comment_path(@thred.bbs, @thred, comment), method: :delete, class: "btn btn-outline-danger btn-sm" do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      <%= render 'layouts/errors', obj: @comment %>
+      <%= form_with model: [@thred.bbs, @thred, @comment] do |f| %>
+        <%= f.text_area :text, class: "form-control" %>
+        <%= f.submit "コメント", class: "btn btn-outline-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
