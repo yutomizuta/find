@@ -15,7 +15,9 @@ class Public::ThredCommentsController < ApplicationController
   end
 
   def destroy
-
+    comment = ThredComment.find(params[:id])
+    comment.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private
