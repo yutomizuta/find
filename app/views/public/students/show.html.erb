@@ -4,6 +4,8 @@
       <%= render 'public/students/profile', student: @student %>
     </div>
     <div class="col-md-8 offset-md-1">
+
+       <!-- 時間割 -->
       <table class="table table-bordered">
         <thead>
           <th></th>
@@ -15,61 +17,31 @@
           <th>土</th>
         </thead>
         <tbody>
+          <!-- 月曜から金曜までの5列と1限から5限までの5行 -->
+          <% period = 0 %>
+          <% while period <= 4 do %>
           <tr>
-            <td>1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%= period + 1 %></td>
+            <% day_of_week = 0 %>
+            <% while day_of_week <= 5 do %>
+              <td><%= @taken_courses.schedule(@student, day_of_week, period) %></td>
+              <% day_of_week += 1 %>
+            <% end %>
+            <% period += 1 %>
           </tr>
-          <tr>
-            <td>2</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          <% end %>
         </tbody>
       </table>
 
+      <!-- 取得オンライン授業一覧 -->
       <h5>オンライン一覧</h5>
       <div class="d-flex flex-wrap">
-        <% @taken_courses.where(day_of_week: 'オンライン').each do |online| %>
+        <% @taken_courses.where(day_of_week: 6).each do |online| %>
           <div class="card text-white bg-info mr-2"><%= online.name %></div>
         <% end %>
       </div>
       
+      <!-- ログインユーザのみ履修削除 -->
       <% if current_student == @student %>
         <%= form_with model:@taken_course do |f| %>
             <div class="d-flex mt-4">
