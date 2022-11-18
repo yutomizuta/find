@@ -13,15 +13,16 @@
           <th></th>
         </thead>
         <tbody>
+          <!-- DM相手一覧 -->
           <% @another_student_rooms.each do |student_room| %>
             <tr>
               <td><%= image_tag student_room.student.get_profile_image(80,80), class: "rounded-lg" %></td>
               <td><%= student_room.student.last_name %><%= student_room.student.first_name %></td>
+              <!-- 最後のメッセージ取得 -->
               <td><%= Chat.find_by(id: student_room.room.chat_ids.last)&.message %></td>
               <td><%= link_to 'プロフィール', student_path(student_room.student), class: "btn btn-outline-dark" %></td>
               <td>
               <% if current_student != student_room.student && current_student.following?(student_room.student) && student_room.student.following?(current_student) %>
-              
                 <%= link_to room_path(student_room.student.id), class: "btn btn-block btn-outline-primary" do %>
                   <i class="far fa-envelope"></i> 
                 <% end %>
@@ -31,7 +32,6 @@
           <% end %>
         </tbody>
       </table>
-      
     </div>
   </div>
 </div>

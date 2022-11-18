@@ -14,6 +14,7 @@
           </tr>
         </thead>
         <tbody>
+        <!-- DM内容（左：相手、右：自分 -->
         <% @chats.each do |chat| %>
           <% if chat.student_id != current_student.id %>
             <tr>
@@ -33,6 +34,7 @@
       </tbody>
       </table>
 
+      <!-- メッセージ送信フォーム -->
       <%= form_with model: @chat do |f| %>
         <div class="d-flex justify-content-end">
           <%= f.text_field :message %>

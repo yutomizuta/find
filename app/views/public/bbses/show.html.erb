@@ -7,11 +7,13 @@
     <div class="col-md-8 offset-md-1">
       <h2>Newスレッド</h2>
       <%= render 'layouts/errors', obj: @thred %>
+      <!-- スレッド作成フォーム -->
       <%= form_with model: [@bbs, @thred] do |f| %>
         <%= f.text_area :text, class: "form-control" %>
         <%= f.submit "投稿", class: "btn btn-outline-success" %>
       <% end %>
 
+      <!-- スレッド一覧 -->
       <h2 class="mt-5"><%= @bbs.university_name %>のスレッド一覧</h2>
       <% @threds.each do |thred| %>
         <div class="card mb-2">

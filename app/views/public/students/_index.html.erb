@@ -1,5 +1,6 @@
 <table class='table'>
   <tbody>
+    <!-- フォロー関係のstudent一覧 -->
     <% students.each do |student| %>
       <tr>
         <td><%= image_tag student.get_profile_image(80,80), class: "rounded-lg" %></td>

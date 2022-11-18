@@ -5,6 +5,7 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
+      <!-- 元スレッド情報 -->
       <div class="card mb-2">
         <div class="card-body">
           <h5 class="card-title"><%= @thred.text %></h5>
@@ -13,6 +14,7 @@
       </div>
       <table>
         <tbody>
+          <!-- スレッドに対するコメント一覧 -->
           <% @comments.each do |comment| %>
             <tr>
               <td><%= image_tag comment.student.get_profile_image(50,50), class: "rounded-lg" %></td>
@@ -33,6 +35,7 @@
       </table>
       
       <%= render 'layouts/errors', obj: @comment %>
+      <!-- コメント投稿フォーム -->
       <%= form_with model: [@thred.bbs, @thred, @comment] do |f| %>
         <%= f.text_area :text, class: "form-control" %>
         <%= f.submit "コメント", class: "btn btn-outline-success" %>

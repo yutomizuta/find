@@ -6,10 +6,12 @@
     <div class="col-md-8 offset-md-1">
       <%= render 'layouts/errors', obj: @bbs %>
       <div class="d-flex">
+        <!-- 自分の大学の掲示板作成フォーム -->
         <%= form_with model: @bbs do |f| %>
           <%= f.hidden_field :university_name, :value => current_student.university_name  %>
           <%= f.submit "自分の大学の掲示板作成", class:"btn btn-sm btn-outline-danger" %>
         <% end %>
+        <!-- 掲示板検索フォーム -->
         <div class="search_form">
           <%= form_with url: search_path, method: :get do |f| %>
             <%= f.text_field :word %>
@@ -17,6 +19,7 @@
           <% end %>
         </div>
       </div>
+      <!-- 掲示板一覧 -->
       <div class="d-flex flex-wrap">
         <% @bbses.each do |bbs| %>
           <%= link_to bbs_path(bbs), class: "btn btn-outline-secondary card mt-3", :style=>"width: 15rem;" do %>
