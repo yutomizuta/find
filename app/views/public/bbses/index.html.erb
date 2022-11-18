@@ -20,12 +20,13 @@
         </div>
       </div>
       <!-- 掲示板一覧 -->
-      <div class="d-flex flex-wrap">
+      <div>
         <% @bbses.each do |bbs| %>
-          <%= link_to bbs_path(bbs), class: "btn btn-outline-secondary card mt-3", :style=>"width: 15rem;" do %>
-            <h1 class="text-center"><%= bbs.university_name %></h1>
+          <%= link_to bbs_path(bbs), class: "btn btn-outline-secondary card mt-3" do %>
+            <h1><%= bbs.university_name %></h1>
           <% end %>
         <% end %>
+        <%= paginate @bbses, theme: 'twitter-bootstrap-4' %>
       </div>
     </div>
   </div>

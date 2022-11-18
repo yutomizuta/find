@@ -16,7 +16,7 @@ class Public::ThredsController < ApplicationController
       redirect_to bbs_path(bbs)
     else
       @bbs = Bbs.find(params[:bbs_id])
-      @threds = @bbs.threds
+      @threds = @bbs.threds.order(id: "DESC").page(params[:page])
       render 'public/bbses/show'
     end
   end

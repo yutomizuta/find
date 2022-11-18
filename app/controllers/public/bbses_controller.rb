@@ -3,13 +3,13 @@ class Public::BbsesController < ApplicationController
 
   def index
     @bbs = Bbs.new
-    @bbses = Bbs.all
+    @bbses = Bbs.all.page(params[:page]).per(6)
   end
 
   def show
     @bbs = Bbs.find(params[:id])
     @thred = Thred.new
-    @threds = @bbs.threds.order(id: "DESC")
+    @threds = @bbs.threds.order(id: "DESC").page(params[:page]).per(4)
   end
 
   def create
@@ -17,7 +17,7 @@ class Public::BbsesController < ApplicationController
     if @bbs.save
       redirect_back(fallback_location: root_path)
     else
-      @bbses = Bbs.all
+      @bbses = Bbs.all.page(params[:page]).per(6)
       render 'index'
     end
   end

@@ -14,7 +14,7 @@
       <% end %>
 
       <!-- スレッド一覧 -->
-      <h2 class="mt-5"><%= @bbs.university_name %>のスレッド一覧</h2>
+      <h2><%= @bbs.university_name %>のスレッド一覧</h2>
       <% @threds.each do |thred| %>
         <div class="card mb-2">
           <div class="card-body">
@@ -36,6 +36,7 @@
           </div>
         </div>
       <% end %>
+      <%= paginate @threds, theme: 'twitter-bootstrap-4' %>
     </div>
   </div>
 </div>
