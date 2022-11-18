@@ -41,7 +41,7 @@
         <% end %>
       </div>
       
-      <!-- ログインユーザのみ履修削除 -->
+      <!-- 履修追加フォーム -->
       <% if current_student == @student %>
         <%= form_with model:@taken_course do |f| %>
             <div class="d-flex mt-4">
@@ -52,9 +52,11 @@
               <%= f.submit "追加", class: 'btn btn-outline-success' %>
             </div>
         <% end %>
+
+        <!-- ログインユーザのみ履修削除 -->
         <div class="d-flex flex-wrap mt-3">
           <% @taken_courses.each do |taken_course| %>
-            <div class="card bg-success text-white ml-2 mb-2" style="width: 8rem;">
+            <div class="card bg-primary text-white ml-2 mb-2" style="width: 8rem;">
               <h5 class="card-title"><%= taken_course.name %></h5>
               <ul class="list-group list-group-flush text-dark">
                 <li class="list-group-item"><%= taken_course.day_of_week %></li>
