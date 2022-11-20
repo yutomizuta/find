@@ -1,24 +1,42 @@
-# README
+# Find（アプリケーション名）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリケーション概要
+大学生が友人ができるきっかけとなるためのアプリケーションです。
 
-Things you may want to cover:
+## 主な利用方法
+自分の大学の掲示板で「スレッドを作り、一緒に授業を受ける友人を募集」「誰かが作ったスレッドに対してコメント」
 
-* Ruby version
+## アプリケーションURL
+* URL
 
-* System dependencies
+## 構成図
 
-* Configuration
 
-* Database creation
+## 使用技術
+* Ruby3.1.2
+* RubyOnRails6.1.7
+* MySQL
+* AWS
+* Docker
 
-* Database initialization
+## ER図
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## 機能一覧
+* ユーザー登録・ログイン機能(devise)
+* フォロー機能
+* DM機能
+* 投稿機能
+* コメント機能
+* ページネーション機能(kaminari)
+* 検索機能
 
-* Deployment instructions
-
-* ...
+## ローカルでの動作確認
+```
+git clone git@github.com:yutomizuta/find.git
+docker compose run --rm app bundle install
+docker compose run --rm api rails db:create
+docker compose run --rm api rails db:migrate
+docker compose run --rm api rails webpacker:install
+docker compose up 
+```
