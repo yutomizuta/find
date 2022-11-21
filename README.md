@@ -4,13 +4,15 @@
 大学生が友人ができるきっかけとなるためのアプリケーションです。
 
 ## 主な利用方法
-自分の大学の掲示板で「スレッドを作り、一緒に授業を受ける友人を募集」「誰かが作ったスレッドに対してコメント」
+自分の大学の掲示板で
+* スレッドを作り、一緒に授業を受ける友人を募集
+* 誰かが作ったスレッドに対してコメント
 
 ## アプリケーションURL
 * URL
 
 ## 構成図
-
+* 構成図画像
 
 ## 使用技術
 * Ruby3.1.2
@@ -20,7 +22,7 @@
 * Docker
 
 ## ER図
-
+* ER図画像
 
 ## 機能一覧
 * ユーザー登録・ログイン機能(devise)
@@ -39,4 +41,9 @@ docker compose run --rm api rails db:create
 docker compose run --rm api rails db:migrate
 docker compose run --rm api rails webpacker:install
 docker compose up 
+## http://localhost:3000/で起動確認
 ```
+
+## 今後の追加予定機能
+* ゲストログイン機能
+* 管理者によるユーザー削除
