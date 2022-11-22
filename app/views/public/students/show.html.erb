@@ -49,7 +49,9 @@
               <%= f.text_field :name %>
               <%= f.select :day_of_week, TakenCourse.day_of_weeks.keys, {prompt: "〇曜日"} %>
               <%= f.select :period, TakenCourse.periods.keys, {prompt: "〇限"} %>
-              <%= f.submit "追加", class: 'btn btn-outline-success' %>
+              <%= f.button class: 'btn btn-outline-success' do %>
+                <i class="fas fa-plus"></i>
+              <% end %>
             </div>
         <% end %>
 
