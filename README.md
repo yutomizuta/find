@@ -22,7 +22,7 @@
 * Docker
 
 ## ER図
-* ER図画像
+* https://drive.google.com/file/d/1hornXhA59CYQkz7hL5tRyDDp6ZruAwC2/view?usp=sharing
 
 ## 機能一覧
 * ユーザー登録・ログイン機能(devise)
