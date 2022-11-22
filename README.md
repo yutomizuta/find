@@ -24,7 +24,7 @@
 ## ER図
 * https://drive.google.com/file/d/1hornXhA59CYQkz7hL5tRyDDp6ZruAwC2/view?usp=sharing
 
-## 機能一覧
+## 主な機能一覧
 * ユーザー登録・ログイン機能(devise)
 * フォロー機能
 * DM機能
@@ -37,13 +37,13 @@
 ```
 git clone git@github.com:yutomizuta/find.git
 docker compose run --rm app bundle install
-docker compose run --rm api rails db:create
-docker compose run --rm api rails db:migrate
-docker compose run --rm api rails webpacker:install
+docker compose run --rm app rails db:create
+docker compose run --rm app rails db:migrate
+docker compose run --rm app rails webpacker:install
 docker compose up 
 ## http://localhost:3000/で起動確認
 ```
 
-## 今後の追加予定機能
+## 追加予定機能
 * ゲストログイン機能
 * 管理者によるユーザー削除
