@@ -3,12 +3,30 @@ services:
     build: .
     volumes:
       - .:/app
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+      - log-data:/app/log
     ports:
      - 3000:3000
-  db:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: password
+  # db:
+  #   image: mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_PASSWORD: password
+  #   ports:
+  #     - 3306:3306
+
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/app/public
+      - tmp-data:/app/tmp
     ports:
-      - 3306:3306
+      - 80:80
+
+volumes:
+  # mysql-data:
+  public-data:
+  tmp-data:
+  log-data:
