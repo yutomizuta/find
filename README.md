@@ -9,7 +9,7 @@
 * 誰かが作ったスレッドに対してコメント
 
 ## アプリケーションURL
-* URL
+* 54.178.162.27
 
 ## 構成図
 * 構成図画像
@@ -19,7 +19,12 @@
 * RubyOnRails6.1.7
 * MySQL
 * AWS
+  * EC2
+  * RDS
+* Nginx
 * Docker
+* Bootstrap4.5
+* FontAwesome
 
 ## ER図
 * https://drive.google.com/file/d/1hornXhA59CYQkz7hL5tRyDDp6ZruAwC2/view?usp=sharing
@@ -37,9 +42,9 @@
 ```
 git clone git@github.com:yutomizuta/find.git
 docker compose run --rm app bundle install
-docker compose run --rm app rails db:create
-docker compose run --rm app rails db:migrate
-docker compose run --rm app rails webpacker:install
+docker compose run --rm api rails db:create
+docker compose run --rm api rails db:migrate
+docker compose run --rm api rails webpacker:install
 docker compose up 
 ## http://localhost:3000/で起動確認
 ```
