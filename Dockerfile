@@ -9,4 +9,4 @@ COPY . .
 
 ENTRYPOINT ["bash", "/app/entrypoint.sh"]
 
-CMD ["rails", "s", "-b", "0.0.0.0", "-e", "production"]
+CMD ["rails", "s", "-b", "0.0.0.0"]
