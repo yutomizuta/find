@@ -9,10 +9,13 @@
 * 誰かが作ったスレッドに対してコメント
 
 ## アプリケーションURL
-* 54.178.162.27
+[Find](54.178.162.27)
+#### ゲスト用アカウントログイン
+* メールアドレス：a@a
+* パスワード：aaaaaa
 
 ## 構成図
-* 構成図画像
+![kouseizu](https://user-images.githubusercontent.com/88771372/204038536-da2db09f-4583-4c77-b3ae-177564a2cf5e.jpg)
 
 ## 使用技術
 * Ruby3.1.2
@@ -22,7 +25,7 @@
   * EC2
   * RDS
 * Nginx
-* Docker
+* Docker(開発環境のみ)
 * Bootstrap4.5
 * FontAwesome
 
@@ -50,5 +53,4 @@ docker compose up
 ```
 
 ## 追加予定機能
-* ゲストログイン機能
 * 管理者によるユーザー削除
